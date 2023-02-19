@@ -1,32 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ScreenOne from './screens/SplashScreens/ScreenOne';
+import ScreenTwo from './screens/SplashScreens/ScreenTwo';
+import ScreenThree from './screens/SplashScreens/ScreenThree';
+import ScreenFour from './screens/SplashScreens/ScreenFour';
+import ScreenFive from './screens/SplashScreens/ScreenFive';
+import ScreenSix from './screens/SplashScreens/ScreenSix';
+import Register from './screens/Authentication/Register';
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.circle}>
 
-      </View>
-      <StatusBar style="auto" />
-    </View>
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='ScreenOne' component={ScreenOne} options={{headerShown: false}}/>
+        <Stack.Screen name='ScreenTwo' component={ScreenTwo} options={{headerShown: false}}/>
+        <Stack.Screen name='ScreenThree' component={ScreenThree} options={{headerShown: false}}/>
+        <Stack.Screen name='ScreenFour' component={ScreenFour} options={{headerShown: false}}/>
+        <Stack.Screen name='ScreenFive' component={ScreenFive} options={{headerShown: false}}/>
+        <Stack.Screen name='ScreenSix' component={ScreenSix} options={{headerShown: false}}/>
+        <Stack.Screen name='Register' component={Register} options={{headerShown: false}}/>
+        <Stack.Screen name='Login' component={Register} options={{headerShown: false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ADD8E6',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  circle : {
-    padding: 30,
-    backgroundColor: "#191970",
-    width : Dimensions.get("window").width*1.8,
-    height: Dimensions.get("window").width*1.8,
-    borderRadius: Dimensions.get("window").width,
-    position: "absolute",
-    bottom:-Dimensions.get("window").height + Dimensions.get("window").width*1.5
-  }
-});

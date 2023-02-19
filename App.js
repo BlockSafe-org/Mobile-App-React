@@ -7,6 +7,9 @@ import ScreenFour from './screens/SplashScreens/ScreenFour';
 import ScreenFive from './screens/SplashScreens/ScreenFive';
 import ScreenSix from './screens/SplashScreens/ScreenSix';
 import Register from './screens/Authentication/Register';
+import Login from './screens/Authentication/Login';
+import Home from './screens/Home';
+import Dashboard from './screens/Navigation/Dashboard';
 
 const Stack = createNativeStackNavigator()
 
@@ -14,15 +17,19 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='ScreenOne' component={ScreenOne} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenTwo' component={ScreenTwo} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenThree' component={ScreenThree} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenFour' component={ScreenFour} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenFive' component={ScreenFive} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenSix' component={ScreenSix} options={{headerShown: false}}/>
-        <Stack.Screen name='Register' component={Register} options={{headerShown: false}}/>
-        <Stack.Screen name='Login' component={Register} options={{headerShown: false}}/>
+      <Stack.Navigator  screenOptions={({ route }) => ({
+        headerShown: false,
+        animation: "none"
+      })}>
+        <Stack.Screen name='ScreenOne' component={ScreenOne}/>
+        <Stack.Screen name='ScreenTwo' component={ScreenTwo}/>
+        <Stack.Screen name='ScreenThree' component={ScreenThree}/>
+        <Stack.Screen name='ScreenFour' component={ScreenFour}/>
+        <Stack.Screen name='ScreenFive' component={ScreenFive}/>
+        <Stack.Screen name='ScreenSix' component={ScreenSix}/>
+        <Stack.Screen name='Register' component={Register}/>
+        <Stack.Screen name='Login' component={Login}/>
+        <Stack.Screen name='Dashboard' component={Dashboard}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

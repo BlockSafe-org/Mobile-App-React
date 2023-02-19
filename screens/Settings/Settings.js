@@ -1,11 +1,11 @@
 import {Button, Text, View, StyleSheet, TextInput, TouchableNativeFeedback } from 'react-native';
-import globalStyles from "../styles/GlobalStyles"
+import globalStyles from "../../styles/GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
 
-export default function Home() {
+export default function Settings() {
     return(
         <View style={[styles.container, globalStyles.mainColor]}>
-            <Text>Home Page</Text>
+            <Text>Settings</Text>
         </View>
     )
 }

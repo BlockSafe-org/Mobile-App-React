@@ -8,14 +8,14 @@ export default function Login() {
 
     return (
       <View style={[globalStyles.mainColor, styles.container]}>
-        <View style={[globalStyles.circle, globalStyles.subColor, styles.inputBox]}>
+        <View style={[globalStyles.circle, globalStyles.subColor]}>
           <Text style={styles.title}>Login</Text>
           <Text style={styles.subTitles}>Email:</Text>
           <TextInput style={styles.input} placeholder='Enter Email...'/>
           <Text style={styles.subTitles}>Password:</Text>
           <TextInput style={styles.input} placeholder='Enter Password...'/>
           <View style={styles.button}>
-            <Button onPress={() => navigate.navigate("Dashboard")} title='Submit' color="#1573FE"/>
+            <Button onPress={() => navigate.navigate("VerifyEmail")} title='Submit' color="#1573FE"/>
             </View>
             <TouchableNativeFeedback onPress={() => navigate.navigate("Register")}>
               <Text style={styles.nav}>Don't have an account? Click here to register.</Text>

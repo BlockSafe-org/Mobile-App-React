@@ -1,4 +1,4 @@
-import {Button, Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import globalStyles from "../styles/GlobalStyles"
 import { useNavigation } from '@react-navigation/native';
 import CardButton from '../models/CardButton';

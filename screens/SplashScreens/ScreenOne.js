@@ -1,4 +1,4 @@
-import { Text, View, Button, StyleSheet, Image } from 'react-native';
+import { View, Button, StyleSheet, Image } from 'react-native';
 import globalStyles from "../../styles/GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';

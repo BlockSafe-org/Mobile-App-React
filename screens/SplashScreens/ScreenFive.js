@@ -1,4 +1,4 @@
-import {Text, View, Button, StyleSheet } from 'react-native';
+import {Text, View, Button, StyleSheet, Image } from 'react-native';
 import globalStyles from "../../styles/GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,6 +7,7 @@ export default function ScreenFive() {
 
     return (
       <View style={[globalStyles.mainColor, styles.container]}>
+        <Image style={{resizeMode: "contain", width : 320, alignSelf:"center", marginTop:-220}} placeholder="Logo" source={require("../../assets/Splashscreen/img4.png")}/>
         <View style={[globalStyles.square, globalStyles.subColor]}>
             <View>
                 <Text style={[styles.text]}>

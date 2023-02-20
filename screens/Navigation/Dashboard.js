@@ -15,7 +15,7 @@ export default function Dashboard() {
         tabBarStyle: {
           backgroundColor: "#8EB4B5"
         },
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ color, size }) => {
           if (route.name === 'MarketPlace') {
               return <Entypo name="shop" size={size} color={color} />;
           } else if (route.name === 'Transfer') {
@@ -31,9 +31,9 @@ export default function Dashboard() {
         headerShown: false
       })}
       >
-        <Tab.Screen name="MarketPlace" component={MarketPlace}/>
-        <Tab.Screen name="Transfer" component={Transfer}/>
         <Tab.Screen name="Home" component={Home}/>
+        <Tab.Screen name="Transfer" component={Transfer}/>
+        <Tab.Screen name="MarketPlace" component={MarketPlace}/>
         <Tab.Screen name="Settings" component={Settings}/>
       </Tab.Navigator>
   );

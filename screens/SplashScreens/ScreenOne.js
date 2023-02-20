@@ -1,4 +1,4 @@
-import { Text, View, Button, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, Button, StyleSheet, Image } from 'react-native';
 import globalStyles from "../../styles/GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
 
@@ -9,6 +9,7 @@ export default function ScreenOne() {
     return (
       <View style={[globalStyles.mainColor, styles.container]}>
         <View style={[globalStyles.circle, globalStyles.subColor]}>
+            <Image style={{resizeMode: "contain", width : 400, alignSelf:"center", marginTop:-100}} placeholder="Logo" source={require("../../assets/Splashscreen/blocksafe_white.png")}/>
             <View style={styles.button}>
             <Button onPress={() => navigate.navigate("ScreenTwo")} title='Next' color="#1573FE"/>
             </View>
@@ -25,8 +26,7 @@ export default function ScreenOne() {
 
     button: {
         padding: 10,
-        marginTop: Dimensions.get("window").height - 250,
         marginHorizontal: 200,
         textAlign: "center" 
-    }
+    },
   })

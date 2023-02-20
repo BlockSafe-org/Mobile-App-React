@@ -8,7 +8,6 @@ import ScreenFive from './screens/SplashScreens/ScreenFive';
 import ScreenSix from './screens/SplashScreens/ScreenSix';
 import Register from './screens/Authentication/Register';
 import Login from './screens/Authentication/Login';
-import Home from './screens/Home';
 import Dashboard from './screens/Navigation/Dashboard';
 
 const Stack = createNativeStackNavigator()
@@ -17,7 +16,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator  screenOptions={({ route }) => ({
+      <Stack.Navigator  screenOptions={() => ({
         headerShown: false,
         animation: "none"
       })}>

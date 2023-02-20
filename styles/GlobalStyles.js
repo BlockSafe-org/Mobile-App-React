@@ -10,6 +10,10 @@ const globalStyles = StyleSheet.create({
         backgroundColor: "#191970",
     },
 
+    dashboardColor: {
+        backgroundColor: "#FAFEFE",
+    },
+
     circle: {
         padding: 30,
         width : Dimensions.get("window").width*1.8,

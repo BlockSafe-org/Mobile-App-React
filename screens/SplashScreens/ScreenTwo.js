@@ -1,4 +1,4 @@
-import {Text, View, Button, StyleSheet } from 'react-native';
+import {Text, View, Button, StyleSheet, Image } from 'react-native';
 import globalStyles from "../../styles/GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
 
@@ -8,6 +8,7 @@ export default function ScreenTwo() {
 
     return (
       <View style={[globalStyles.mainColor, styles.container]}>
+         <Image style={{resizeMode: "contain", width : 350, alignSelf:"center", marginTop:-200}} placeholder="Logo" source={require("../../assets/Splashscreen/img1.png")}/>
         <View style={[globalStyles.square, globalStyles.subColor]}>
             <View>
                 <Text style={[styles.text]}>

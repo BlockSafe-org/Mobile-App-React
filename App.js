@@ -10,6 +10,7 @@ import FirebaseAuth from './src/services/Authentication';
 import { Storage } from "expo-storage";
 import app from "./src/services/FirebaseConfig"
 import { getAuth } from "firebase/auth";
+import { ActivityIndicator, View } from 'react-native';
 
 
 const Stack = createNativeStackNavigator()
@@ -17,6 +18,7 @@ const Stack = createNativeStackNavigator()
 export default function App() {
   const [isFirstTime, setIsFirstTime] = useState(null);
   const [user, setUser] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const _auth = getAuth(app)
 
   useEffect(() => {
@@ -30,11 +32,19 @@ export default function App() {
       }
     }
     getIsFirstTime()
-    _auth.onAuthStateChanged((e) => {
+    _auth.onAuthStateChanged(async (e) => {
       setUser(e)
+      await new Promise(resolve => setTimeout(resolve, 2000)) 
+      setIsLoading(false)
     })
   }, [])
-
+if(isLoading) {
+  return (
+    <View style={{flex:1, alignContent:"center"}}>
+      <ActivityIndicator size="large" color="black"/>
+    </View>
+  )
+}
     if (isFirstTime == "true") {
       return(
         <NavigationContainer>

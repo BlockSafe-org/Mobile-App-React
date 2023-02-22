@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Dimensions, Image } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Image, TextInput } from 'react-native';
 import globalStyles from "../styles/GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView, Button } from 'react-native';
@@ -30,9 +30,14 @@ export default function CreateProfile() {
         <ScrollView
       contentContainerStyle={styles.scrollView}>
         <Text style={styles.title}>Create Profile</Text>
-        <Image style={{justifyContent:"center", alignSelf:"center"}} source={selectedImage ? selectedImage : require("../assets/placeholder.jpg")}/>
+        <Text style={styles.subTitles}>Username</Text>
+        <TextInput style={styles.input} placeholder='Enter Username...'/>
+        <Image style={{justifyContent:"center", alignSelf:"center"}} source={selectedImage ? {uri:selectedImage,width:200,height:200} : require("../assets/placeholder.jpg")}/>
         <View style={styles.button}>
             <Button title="Pick a Picture" onPress={() => pickImageAsync()}/>
+           </View>
+           <View style={styles.submit}>
+            <Button title="Submit" onPress={() => navigate.navigate("Dashboard")}/>
            </View>
           </ScrollView>
         </View>
@@ -48,7 +53,7 @@ export default function CreateProfile() {
     },
 
     scrollView: {
-        marginTop: 50,
+        marginTop: 20,
     },
 
     title: {
@@ -60,22 +65,40 @@ export default function CreateProfile() {
       fontWeight: "bold",
     },
 
-    info:{
-        backgroundColor:"white",
-        padding: 10,
-        alignSelf: "center",
-        marginTop: 30,
+    submit:{
+        marginHorizontal: 200,
+        alignContent: "center",
+        marginTop: 20,
         marginBottom: 10,
-        fontSize: 20,
-        borderRadius: 8,
-      width: Dimensions.get("screen").width-70
     },
 
+    input: {
+        height: 40,
+        width: 250,
+        padding: 10,
+        backgroundColor: "white",
+        borderRadius: 5,
+        alignSelf: "center",
+        marginBottom: 30
+      },
+  
+    subTitles: {
+        color: "white",
+        alignSelf: "center",
+        textAlign: "center",
+        marginTop: 15,
+        marginBottom: 10,
+        fontSize: 20,
+        fontWeight: "bold",
+        width: 200,
+      },
+  
+
     button: {
-      marginHorizontal: 200,
+      marginHorizontal: 230,
       alignContent: "center",
       marginTop: 20,
-      marginBottom: 200,
+      marginBottom: 10,
     },
 
     checkbox: {
@@ -84,15 +107,6 @@ export default function CreateProfile() {
         marginLeft: 50,
         justifyContent: "flex-end",
         marginBottom: 10,
-    },
-
-    agree: {
-    color: "white",
-      alignSelf: "center",
-      marginLeft: 10,
-      marginBottom: 10,
-      fontSize: 20,
-      width: Dimensions.get("screen").width-30
     }
 
   })

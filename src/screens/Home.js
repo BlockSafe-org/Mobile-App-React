@@ -11,7 +11,7 @@ export default function Home() {
     return(
         <SafeAreaView style={[globalStyles.dashboardColor, styles.container]}>
                 <View style={styles.buttons}>
-                    <CardButton title="Deposit" icon="arrowdown" onPress={() => navigate.navigate("")}/>
+                    <CardButton title="Deposit" icon="arrowdown"/>
                     <CardButton title="Swap" icon="swap"/>
                     <CardButton title="Withdraw" icon="arrowup"/>
                 </View>

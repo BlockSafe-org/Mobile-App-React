@@ -1,4 +1,5 @@
 node_modules/
+./services/FirebaseConfig.js
 .expo/
 dist/
 npm-debug.*

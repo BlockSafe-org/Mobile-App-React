@@ -14,8 +14,10 @@ export default function VerifyEmail() {
     useEffect(() => {
       async function checkEmail () {
         if (FirebaseAuth.getUser() != null){
+          if(FirebaseAuth.isVerified() != true) {
           await FirebaseAuth.sendVerificationEmail().catch(e => console.log(e));
           setVerified(FirebaseAuth.isVerified());
+          }
           }
       }
       checkEmail();

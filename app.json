@@ -4,10 +4,10 @@
     "slug": "BlockSafe",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo-black.png",
+    "icon": "./src/assets/logo-black.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo-black.png",
+      "image": "./src/assets/logo-black.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,8 +22,9 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF",
+        "softwareKeyboardLayoutMode": "pan"
       },
       "package": "com.benzidarwin.BlockSafe"
     },

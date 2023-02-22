@@ -5,15 +5,11 @@ const _auth = getAuth(app)
 
 class FirebaseAuth {
     static async sendVerificationEmail() {
-      await sendEmailVerification(_auth.currentUser)
+      await sendEmailVerification(this.getUser())
     }
-
-    static setUser() {
-      let user = null
-      _auth.onAuthStateChanged((e) => {
-        user = e;
-      })
-      return user;
+  
+    static getUser() {
+      return _auth.currentUser;
     }
 
 
@@ -24,19 +20,16 @@ class FirebaseAuth {
     }
 
     static async register(email, password) {
+    let message = {code: null, message:null}
     await createUserWithEmailAndPassword(_auth, email, password)
     .then(() => {
         console.log('User account created & signed in!');
+        message = {code:0, message:"success"};
     })
     .catch(error => {
-    if (error.code === 'auth/email-already-in-use') {
-      console.log('That email address is already in use!');
-    }
-    if (error.code === 'auth/invalid-email') {
-      console.log('That email address is invalid!');
-    }
-    console.error(error);
-    });
+      message = {code:1, message: error.code}
+    })
+    return message;
     }
 
     static async signOut () {
@@ -45,19 +38,16 @@ class FirebaseAuth {
     }
 
     static async signIn(email, password) {
+      let message = {code: null, message:null}
         signInWithEmailAndPassword(_auth, email, password)
-    .then(() => {
-        console.log('User account signed in!');
-    })
-    .catch(error => {
-    if (error.code === 'auth/user-not-found' ||error.code === "auth/wrong-password") {
-      console.log('Wrong email or password!');
-    }
-    if (error.code === 'auth/invalid-email') {
-      console.log('That email address is invalid!');
-    }
-    console.error(error);
-    });
+        .then(() => {
+          console.log('User account signed in!');
+          message = {code:0, message:"success"};
+      })
+      .catch(error => {
+        message = {code:1, message: error.code}
+      })
+      return message;
     }
 }
 

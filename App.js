@@ -6,11 +6,11 @@ import FirstStack from './src/screens/Navigation/FirstStack';
 import AppStack from './src/screens/Navigation/AppStack';
 import AuthStack
  from './src/screens/Navigation/AuthStack';
-import FirebaseAuth from './src/services/Authentication';
 import { Storage } from "expo-storage";
 import app from "./src/services/FirebaseConfig"
 import { getAuth } from "firebase/auth";
-import { ActivityIndicator, View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
+import globalStyles from './src/styles/GlobalStyles';
 
 
 const Stack = createNativeStackNavigator()
@@ -40,8 +40,8 @@ export default function App() {
   }, [])
 if(isLoading) {
   return (
-    <View style={{flex:1, alignContent:"center"}}>
-      <ActivityIndicator size="large" color="black"/>
+    <View style={[{flex:1, alignContent:"center", justifyContent:"center"}, globalStyles.mainColor]}>
+      <ActivityIndicator size={100} color="blue"/>
     </View>
   )
 }
@@ -59,7 +59,7 @@ if(isLoading) {
           </NavigationContainer>
         )
       } else {
-        if (user.emailVerified == true) {
+        if (user.emailVerified == false) {
           return(
             <NavigationContainer>
               <VerifyStack/>

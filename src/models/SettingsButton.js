@@ -2,9 +2,9 @@ import { View, Text, Dimensions, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 
-export default function SettingsButton({title, buttonName}) {
+export default function SettingsButton({title, buttonName, onPress}) {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress}>
                 <View style={styles.container}>
                 <AntDesign style={styles.button} name={buttonName} size={24} color="black" />
                 <Text style={styles.title}>{title}</Text>

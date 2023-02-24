@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 export default function Settings() {
     const [isVerified, setIsVerified] = useState(false)
+    const navigate = useNavigation()
     return(
         <SafeAreaView style={[styles.container, globalStyles.dashboardColor]}>
             <ScrollView>
@@ -24,8 +25,8 @@ export default function Settings() {
             }
             <SettingsButton title="User Details" buttonName="user"/>
             <SettingsButton title="Display Settings" buttonName="setting"/>
-            <SettingsButton title="Terms And Conditions" buttonName="Safety"/>
-            <SettingsButton title="Privacy Policy" buttonName="lock"/>
+            <SettingsButton title="Terms And Conditions" buttonName="Safety" onPress={() => navigate.navigate("TermsAndConditions")}/>
+            <SettingsButton title="Privacy Policy" buttonName="lock" onPress={() => navigate.navigate("PrivacyPolicy")}/>
             <SettingsButton title="Contact Us" buttonName="customerservice"/>
             <SettingsButton title="Logout" buttonName="logout"/>
             </ScrollView>

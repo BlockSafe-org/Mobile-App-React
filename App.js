@@ -1,29 +1,77 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ScreenOne from './screens/SplashScreens/ScreenOne';
-import ScreenTwo from './screens/SplashScreens/ScreenTwo';
-import ScreenThree from './screens/SplashScreens/ScreenThree';
-import ScreenFour from './screens/SplashScreens/ScreenFour';
-import ScreenFive from './screens/SplashScreens/ScreenFive';
-import ScreenSix from './screens/SplashScreens/ScreenSix';
-import Register from './screens/Authentication/Register';
+import { useEffect, useState } from 'react';
+import VerifyStack from './src/screens/Navigation/VerifyStack';
+import FirstStack from './src/screens/Navigation/FirstStack';
+import AppStack from './src/screens/Navigation/AppStack';
+import AuthStack
+ from './src/screens/Navigation/AuthStack';
+import { Storage } from "expo-storage";
+import app from "./src/services/FirebaseConfig"
+import { getAuth } from "firebase/auth";
+import { View, ActivityIndicator } from 'react-native';
+import globalStyles from './src/styles/GlobalStyles';
+
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
+  const [isFirstTime, setIsFirstTime] = useState(null);
+  const [user, setUser] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const _auth = getAuth(app)
 
+  useEffect(() => {
+    const getIsFirstTime = async () => {
+      let check =  await Storage.getItem("isFirstTime");
+      if(check == null) {
+        setIsFirstTime("true");
+        await Storage.setItem("isFirstTime", "false");
+      } else {
+        setIsFirstTime("false");
+      }
+    }
+    getIsFirstTime()
+    _auth.onAuthStateChanged(async (e) => {
+      setUser(e)
+      await new Promise(resolve => setTimeout(resolve, 2000)) 
+      setIsLoading(false)
+    })
+  }, [])
+if(isLoading) {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='ScreenOne' component={ScreenOne} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenTwo' component={ScreenTwo} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenThree' component={ScreenThree} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenFour' component={ScreenFour} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenFive' component={ScreenFive} options={{headerShown: false}}/>
-        <Stack.Screen name='ScreenSix' component={ScreenSix} options={{headerShown: false}}/>
-        <Stack.Screen name='Register' component={Register} options={{headerShown: false}}/>
-        <Stack.Screen name='Login' component={Register} options={{headerShown: false}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+    <View style={[{flex:1, alignContent:"center", justifyContent:"center"}, globalStyles.mainColor]}>
+      <ActivityIndicator size={100} color="blue"/>
+    </View>
+  )
+}
+    if (isFirstTime == "true") {
+      return(
+        <NavigationContainer>
+        <FirstStack/>
+      </NavigationContainer>
+      )
+    } else if (isFirstTime == "false") {
+      if(user == null) {
+        return(
+          <NavigationContainer>
+            <AuthStack/>
+          </NavigationContainer>
+        )
+      } else {
+        if (user.emailVerified == false) {
+          return(
+            <NavigationContainer>
+              <VerifyStack/>
+            </NavigationContainer>
+          )
+        } else {
+          return (
+            <NavigationContainer>
+            <AppStack/>
+          </NavigationContainer>
+          )
+        }
+      }
+    }
 }

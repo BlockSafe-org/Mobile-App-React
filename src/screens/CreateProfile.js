@@ -37,7 +37,7 @@ export default function CreateProfile() {
             <Button title="Pick a Picture" onPress={() => pickImageAsync()}/>
            </View>
            <View style={styles.submit}>
-            <Button title="Submit" onPress={() => navigate.navigate("Dashboard")}/>
+            <Button title="Submit" onPress={() => navigate.navigate("AppStack")}/>
            </View>
           </ScrollView>
         </View>

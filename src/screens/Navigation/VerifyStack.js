@@ -3,6 +3,7 @@ import VerifyEmail from '../Authentication/VerifyEmail';
 import TermsAndConditions from '../Legal/AgreeTermsAndConditions';
 import CreateProfile from '../CreateProfile';
 import Dashboard from './Dashboard';
+import AppStack from "./AppStack";
 
 const Stack = createNativeStackNavigator()
 
@@ -15,7 +16,7 @@ export default function VerifyStack() {
      <Stack.Screen name='VerifyEmail' component={VerifyEmail}/>
      <Stack.Screen name="TermsAndConditions" component={TermsAndConditions}/>
      <Stack.Screen name='CreateProfile' component={CreateProfile}/>
-     <Stack.Screen name='Dashboard' component={Dashboard}/>
+     <Stack.Screen name='AppStack' component={AppStack}/>
    </Stack.Navigator>
     )
 }

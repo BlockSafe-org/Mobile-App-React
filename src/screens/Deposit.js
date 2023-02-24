@@ -1,47 +1,33 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image, Button, VirtualizedList } from 'react-native';
+import { Text, View, StyleSheet, TextInput, ScrollView, Image, Button } from 'react-native';
 import globalStyles from "../styles/GlobalStyles"
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AppBar, IconButton } from "@react-native-material/core";
 import { AntDesign } from '@expo/vector-icons';
-import { useState } from 'react';
-import DropDownPicker from 'react-native-dropdown-picker';
-
-export default function Transfer() {
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState("USDT");
-    const [items, setItems] = useState([
-      {label: "Tether", value: "USDT", icon: () => <Image style={{width:35, height:35}} source={require('../assets/Dashboard/tether.png')} />},
-      {label: 'GenCoin', value: 'GCN', icon: () => <Image  style={{width:35, height:35, alignSelf:"center", resizeMode:"contain"}} source={require('../assets/Dashboard/gencoin.png')} />}
-    ]);
+import { useNavigation } from '@react-navigation/native';
 
 
-    
+
+export default function Deposit() {
+    const navigate = useNavigation()
 
     return(
         <SafeAreaView style={[styles.container, globalStyles.dashboardColor]}>
+        <AppBar
+            title="Deposit"
+            style={[globalStyles.dashboardColor, {elevation:0}]}
+            titleStyle={{color:"#5F9EA0", fontSize:25}}
+            leading={() => (
+                <IconButton icon={<AntDesign name="back" size={24} color="black" />} onPress={() => navigate.goBack()}/>
+            )}
+            centerTitle={true}
+            />
             <ScrollView nestedScrollEnabled={true}>
         <Text style={[styles.subTitles, {marginTop: 40}]}>Enter Amount:</Text>
         <View style={{flexDirection:'row', justifyContent:"space-evenly"}}>
         <TextInput style={styles.amount} keyboardType="numeric" placeholder='Enter amount'/>
         </View>
-        <DropDownPicker
-        style={{width:90, height:20, alignSelf:"center", marginTop:10, marginBottom:30}}
-        dropDownContainerStyle={{width:160, alignSelf:"center"}}     
-      open={open}
-      value={value}
-      items={items}
-      setOpen={setOpen}
-      setValue={setValue}
-      setItems={setItems}
-    />
-        <Text style={styles.subTitles}>Enter Email or ethereum address:</Text>
-        <View style={{flexDirection:'row', justifyContent:"center"}}>
-        <TextInput style={styles.input} placeholder='Email or ethereum address...'/>
-        <TouchableOpacity>
-        <AntDesign name="qrcode" size={40} color="black" />
-        </TouchableOpacity>
-        </View>
         <View style={styles.submit}>
-            <Button title="Submit" />
+            <Button title="Proceed" />
            </View>
         <Text style={styles.subTitles}>Recent Transactions:</Text>
         <View>

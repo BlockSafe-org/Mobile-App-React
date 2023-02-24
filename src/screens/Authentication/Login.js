@@ -24,7 +24,7 @@ export default function Login() {
           initialValues={{email:"", password: "", passwordConfirm: ""}}
           validationSchema={loginSchema}
           onSubmit={async (values, actions) => {
-            //actions.resetForm()
+            actions.resetForm()
             setIsLoading(true);
             let res = await FirebaseAuth.signIn(values.email, values.password);
             setIsLoading(false)

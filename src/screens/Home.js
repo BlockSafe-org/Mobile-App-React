@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import CardButton from '../models/CardButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Balances from '../models/Balances';
+
   
 
 export default function Home() {
@@ -11,9 +12,9 @@ export default function Home() {
     return(
         <SafeAreaView style={[globalStyles.dashboardColor, styles.container]}>
                 <View style={styles.buttons}>
-                    <CardButton title="Deposit" icon="arrowdown"/>
-                    <CardButton title="Swap" icon="swap"/>
-                    <CardButton title="Withdraw" icon="arrowup"/>
+                    <CardButton title="Deposit" icon="arrowdown" onPress={() => navigate.navigate("Deposit")}/>
+                    <CardButton title="Swap" icon="swap" onPress={() => navigate.navigate("Swap")}/>
+                    <CardButton title="Withdraw" icon="arrowup" onPress={() => navigate.navigate("Withdraw")}/>
                 </View>
                 <View style={styles.buttons}>
                   <Balances>

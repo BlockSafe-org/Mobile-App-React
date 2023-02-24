@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
             />
         <View style={[globalStyles.circle, globalStyles.subColor]}>
         <ScrollView
-          style={{marginTop:20,marginBottom:130}}
+          style={{marginTop:20,marginBottom:140}}
       contentContainerStyle={styles.scrollView}>
       
         <Text style={styles.title}>Privacy Policy</Text>
@@ -53,7 +53,8 @@ export default function PrivacyPolicy() {
     },
 
     scrollView: {
-        marginTop: 50,
+        marginBottom: 50,
+        height:Dimensions.get("screen").height+110, 
     },
 
     title: {

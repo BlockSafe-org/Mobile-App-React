@@ -7,7 +7,7 @@ import Checkbox from "expo-checkbox";
 import { useState } from 'react';
 
 
-export default function TermsAndConditions() {
+export default function AgreeTermsAndConditions() {
     const navigate = useNavigation()
     const [isChecked, setChecked] = useState(false)
 

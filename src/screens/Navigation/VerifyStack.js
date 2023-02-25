@@ -14,7 +14,7 @@ export default function VerifyStack() {
      animation: "none"
    })}>
      <Stack.Screen name='VerifyEmail' component={VerifyEmail}/>
-     <Stack.Screen name="TermsAndConditions" component={AgreeTermsAndConditions}/>
+     <Stack.Screen name="AgreeTermsAndConditions" component={AgreeTermsAndConditions}/>
      <Stack.Screen name='CreateProfile' component={CreateProfile}/>
      <Stack.Screen name='AppStack' component={AppStack}/>
    </Stack.Navigator>

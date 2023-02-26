@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MarketPlace from '../MarketPlace/MarketPlace';
 import Transfer from '../Transfer';
 import Home from '../Home';
 import Settings from '../Settings/Settings';
 import { Ionicons, MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
+import MarketDashboard from './MarketDashBoard';
 
 
 const Tab = createBottomTabNavigator();
@@ -33,7 +33,7 @@ export default function Dashboard() {
       >
         <Tab.Screen name="Home" component={Home}/>
         <Tab.Screen name="Transfer" component={Transfer}/>
-        <Tab.Screen name="MarketPlace" component={MarketPlace}/>
+        <Tab.Screen name="MarketPlace" component={MarketDashboard}/>
         <Tab.Screen name="Settings" component={Settings}/>
       </Tab.Navigator>
   );

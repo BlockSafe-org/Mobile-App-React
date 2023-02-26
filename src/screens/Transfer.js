@@ -17,7 +17,7 @@ export default function Transfer() {
     
 
     return(
-        <SafeAreaView style={[styles.container, globalStyles.dashboardColor]}>
+        <SafeAreaView style={[styles.container, globalStyles.dashboardColorLight]}>
             <ScrollView nestedScrollEnabled={true}>
         <Text style={[styles.subTitles, {marginTop: 40}]}>Enter Amount:</Text>
         <View style={{flexDirection:'row', justifyContent:"space-evenly"}}>

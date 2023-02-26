@@ -59,16 +59,16 @@ if(isLoading) {
           </NavigationContainer>
         )
       } else {
-        if (user.emailVerified == false) {
+        if (user.emailVerified == true) {
           return(
             <NavigationContainer>
-              <VerifyStack/>
+              <AppStack/>
             </NavigationContainer>
           )
         } else {
           return (
             <NavigationContainer>
-            <AppStack/>
+            <VerifyStack/>
           </NavigationContainer>
           )
         }

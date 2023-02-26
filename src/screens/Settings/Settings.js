@@ -11,7 +11,7 @@ export default function Settings() {
     const [isVerified, setIsVerified] = useState(false)
     const navigate = useNavigation()
     return(
-        <SafeAreaView style={[styles.container, globalStyles.dashboardColor]}>
+        <SafeAreaView style={[styles.container, globalStyles.dashboardColorLight]}>
             <ScrollView>
             <Image style={styles.image} source={require("../../assets/placeholder.jpg")}/>
             { isVerified ?

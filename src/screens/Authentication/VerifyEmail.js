@@ -52,7 +52,7 @@ export default function VerifyEmail() {
            <Text style={styles.info}>Your email has been verified!</Text>
            <Text style={styles.info}>Please Click the button below to proceed to the next page.</Text>
            <View style={styles.button}>
-            <Button title="Terms and conditions" onPress={() => navigate.navigate("TermsAndConditions")}/>
+            <Button title="Terms and conditions" onPress={() => navigate.navigate("AgreeTermsAndConditions")}/>
            </View>
           </>
         }

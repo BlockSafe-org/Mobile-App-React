@@ -19,10 +19,10 @@ export default function Swap() {
     ]);
 
     return(
-        <SafeAreaView style={[styles.container, globalStyles.dashboardColor]}>
+        <SafeAreaView style={[styles.container, globalStyles.dashboardColorLight]}>
                <AppBar
             title="Swap"
-            style={[globalStyles.dashboardColor, {elevation:0}]}
+            style={[globalStyles.dashboardColorLight, {elevation:0}]}
             titleStyle={{color:"#5F9EA0", fontSize:25}}
             leading={() => (
                 <IconButton icon={<AntDesign name="back" size={24} color="black" />} onPress={() => navigate.goBack()}/>

@@ -18,7 +18,7 @@ export default function VerifyEmail() {
         if (reloadUser != null){
           setUser(reloadUser)
           if(user.emailVerified == false) {
-          await FirebaseAuth.sendVerificationEmail().catch(e => console.log(e));
+          await FirebaseAuth.sendVerificationEmail();
           }
           setVerified(user.emailVerified);
           }
@@ -30,13 +30,11 @@ export default function VerifyEmail() {
     const onRefresh = async () => {
       setRefreshing(true)
       let reloadUser =  await FirebaseAuth.getUser();
-      if (reloadUser != null){
         setUser(reloadUser)
         if(user.emailVerified == false) {
-        await FirebaseAuth.sendVerificationEmail().catch(e => console.log(e));
+        await FirebaseAuth.sendVerificationEmail();
         }
         setVerified(user.emailVerified);
-        }
       setRefreshing(false)
     }
 

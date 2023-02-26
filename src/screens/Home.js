@@ -10,7 +10,7 @@ import Balances from '../models/Balances';
 export default function Home() {
     const navigate = useNavigation()
     return(
-        <SafeAreaView style={[globalStyles.dashboardColor, styles.container]}>
+        <SafeAreaView style={[globalStyles.dashboardColorLight, styles.container]}>
                 <View style={styles.buttons}>
                     <CardButton title="Deposit" icon="arrowdown" onPress={() => navigate.navigate("Deposit")}/>
                     <CardButton title="Swap" icon="swap" onPress={() => navigate.navigate("Swap")}/>

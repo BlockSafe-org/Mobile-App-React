@@ -10,7 +10,7 @@ const globalStyles = StyleSheet.create({
         backgroundColor: "#191970",
     },
 
-    dashboardColor: {
+    dashboardColorLight: {
         backgroundColor: "#FAFEFE",
     },
 

@@ -7,9 +7,9 @@ import globalStyles from "../../styles/GlobalStyles";
 
 export default function Merchant({navigation}) {
     return (
-        <SafeAreaView style={[styles.container, globalStyles.dashboardColor]}>
+        <SafeAreaView style={[styles.container, globalStyles.dashboardColorLight]}>
         <AppBar
-        style={[globalStyles.dashboardColor, {elevation:0}]}
+        style={[globalStyles.dashboardColorLight, {elevation:0}]}
         titleStyle={{color:"#5F9EA0", fontSize:25}}
         leading={<IconButton icon={<Entypo name="menu" size={26} color="black" />} onPress={() => navigation.openDrawer()}/>}
         />

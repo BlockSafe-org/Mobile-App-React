@@ -9,10 +9,10 @@ export default function MarketPlace({navigation}) {
     const width = Dimensions.get('window').width-40;
     return(
         <TouchableWithoutFeedback onPress={() => navigation.closeDrawer()}>
-        <ScrollView style={[styles.container, globalStyles.dashboardColor]}>
+        <ScrollView style={[styles.container, globalStyles.dashboardColorLight]}>
             <Image style={{resizeMode:"contain",width:Dimensions.get("screen").width-50, alignSelf:"center"}} source={require("../../assets/blockly.png")}/>
             <AppBar
-            style={[globalStyles.dashboardColor, {elevation:0, marginTop:-30}]}
+            style={[globalStyles.dashboardColorLight, {elevation:0, marginTop:-30}]}
             titleStyle={{color:"#5F9EA0", fontSize:25}}
             leading={<IconButton icon={<Entypo name="menu" size={26} color="black" />} onPress={() => navigation.openDrawer()}/>}
             trailing={<IconButton icon={<AntDesign name="search1" size={26} color="black" />} onPress={() => navigation.navigate("Search")}/>}

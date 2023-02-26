@@ -1,12 +1,21 @@
-import {Button, Text, View, StyleSheet, Image, Dimensions, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import {Button, Text, View, StyleSheet, Image, Dimensions, ScrollView, TouchableWithoutFeedback, FlatList } from 'react-native';
 import globalStyles from "../../styles/GlobalStyles"
 import { AppBar, IconButton } from '@react-native-material/core';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import Carousel from 'react-native-reanimated-carousel';
+import CategoryCard from '../../models/CategoryCard';
 
 export default function MarketPlace({navigation}) {
     const width = Dimensions.get('window').width-40;
+
+    let data = [
+        {category:"Men's Fashion", img:""},
+        {category:"Watches & Jewelry", img:""},
+        {category:"Women's Fashion", img:""},
+        {category:"Electronics", img:""},
+        {category:"Phone Assessories", img:""},
+    ]
     return(
         <TouchableWithoutFeedback onPress={() => navigation.closeDrawer()}>
         <ScrollView style={[styles.container, globalStyles.dashboardColorLight]}>
@@ -52,6 +61,11 @@ export default function MarketPlace({navigation}) {
                 <Text style={styles.subTitlesRight}>See more:</Text>
                 </TouchableWithoutFeedback>
             </View>
+            <FlatList data={data} numColumns={2} contentContainerStyle={{justifyContent:"space-evenly", alignSelf:"center"}} renderItem={({item}) =>{
+                return(
+                    <CategoryCard category={item.category}/>
+                )
+            }}/>
         </ScrollView>
         </TouchableWithoutFeedback>
     )

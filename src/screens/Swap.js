@@ -59,7 +59,7 @@ export default function Swap() {
     />
         </View>
         <View style={styles.submit}>
-            <Button title="Swap tokens" />
+            <Button title="Swap tokens" color="#8EB4B5" />
            </View>
         <Text style={styles.subTitles}>Recent Transactions:</Text>
         <View>

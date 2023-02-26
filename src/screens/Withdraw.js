@@ -25,7 +25,7 @@ export default function Withdraw() {
         <TextInput style={styles.amount} keyboardType="numeric" placeholder='Enter amount'/>
         </View>
         <View style={styles.submit}>
-            <Button title="Proceed" />
+            <Button title="Proceed" color="#8EB4B5"/>
            </View>
         <Text style={styles.subTitles}>Recent Transactions:</Text>
         <View>

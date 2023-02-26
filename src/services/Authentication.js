@@ -8,15 +8,15 @@ class FirebaseAuth {
       await sendEmailVerification(this.getUser())
     }
   
-    static getUser() {
+    static async getUser() {
+      await _auth.currentUser.reload();
       return _auth.currentUser;
     }
 
 
-    static isVerified() {
-    _auth.onAuthStateChanged((e) => {
-      return e.emailVerified;
-    })
+    static async isVerified() {
+      await _auth.currentUser.reload();
+      return _auth.currentUser.emailVerified
     }
 
     static async register(email, password) {

@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react';
 import VerifyStack from './src/screens/Navigation/VerifyStack';
 import FirstStack from './src/screens/Navigation/FirstStack';
 import AppStack from './src/screens/Navigation/AppStack';
-import AuthStack
- from './src/screens/Navigation/AuthStack';
+import AuthStack from './src/screens/Navigation/AuthStack';
 import { Storage } from "expo-storage";
 import app from "./src/services/FirebaseConfig"
 import { getAuth } from "firebase/auth";

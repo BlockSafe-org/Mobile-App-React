@@ -4,11 +4,21 @@ import { useNavigation } from '@react-navigation/native';
 import CardButton from '../models/CardButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Balances from '../models/Balances';
+import { useEffect } from 'react';
+import { getUserAddress } from '../services/Blockchain/ContractControl';
+import FirebaseAuth from '../services/Authentication';
 
   
 
 export default function Home() {
     const navigate = useNavigation()
+    useEffect(() => {
+      async function getUser() {
+      let user = await FirebaseAuth.getUser();
+      await getUserAddress(user.email)
+      }
+      getUser()
+    })
     return(
         <SafeAreaView style={[globalStyles.dashboardColorLight, styles.container]}>
                 <View style={styles.buttons}>

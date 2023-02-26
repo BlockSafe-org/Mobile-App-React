@@ -8,6 +8,7 @@ import ScreenSix from '../SplashScreens/ScreenSix';
 import Register from '../Authentication/Register';
 import Login from '../Authentication/Login';
 import VerifyEmail from '../Authentication/VerifyEmail';
+import VerifyStack from './VerifyStack';
 
 const Stack = createNativeStackNavigator()
 
@@ -24,8 +25,8 @@ export default function FirstStack() {
      <Stack.Screen name='ScreenFive' component={ScreenFive}/>
      <Stack.Screen name='ScreenSix' component={ScreenSix}/>
      <Stack.Screen name='Register' component={Register}/>
-     <Stack.Screen name='VerifyEmail' component={VerifyEmail}/>
      <Stack.Screen name='Login' component={Login}/>
+     <Stack.Screen name="Verify" component={VerifyStack}/>
    </Stack.Navigator>
     )
 }

@@ -34,7 +34,7 @@ export default function Register() {
                 console.log(res.message);
               } else {
                 console.log(res.message);
-                navigate.navigate("VerifyEmail");
+                navigate.navigate("Verify");
               }
           }}>
             {(props) => (

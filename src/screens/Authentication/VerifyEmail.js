@@ -8,16 +8,20 @@ import { ScrollView, RefreshControl, Button } from 'react-native';
 
 export default function VerifyEmail() {
     const navigate = useNavigation()
+    const [user, setUser] = useState(null)
     const [isVerified, setVerified] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
 
     useEffect(() => {
       async function checkEmail () {
-        if (FirebaseAuth.getUser() != null){
-          if(FirebaseAuth.isVerified() != true) {
+        let reloadUser =  await FirebaseAuth.getUser();
+        if (reloadUser != null){
+          console.log(reloadUser)
+          setUser(reloadUser)
+          if(user.emailVerified == false) {
           await FirebaseAuth.sendVerificationEmail().catch(e => console.log(e));
-          setVerified(FirebaseAuth.isVerified());
           }
+          setVerified(user.emailVerified);
           }
       }
       checkEmail();
@@ -40,21 +44,20 @@ export default function VerifyEmail() {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-        {isVerified ? (
-           <>
-           <Text style={styles.title}>Confirm Email</Text>
-           <Text style={styles.info}>We have sent you a verification email.</Text>
-           <Text style={styles.info}>Please check your spam for the email and verify your email.</Text>
-           <Text style={styles.info}>Pull down to refresh page.</Text>
-           </>
-        ): <>
+        {isVerified ? 
+        <>
              <Text style={styles.title}>Email Confirmed!🎉🎉🎉</Text>
            <Text style={styles.info}>Your email has been verified!</Text>
            <Text style={styles.info}>Please Click the button below to proceed to the next page.</Text>
            <View style={styles.button}>
             <Button title="Terms and conditions" onPress={() => navigate.navigate("AgreeTermsAndConditions")}/>
            </View>
-          </>
+          </>:  <>
+           <Text style={styles.title}>Confirm Email</Text>
+           <Text style={styles.info}>We have sent you a verification email.</Text>
+           <Text style={styles.info}>Please check your spam for the email and verify your email.</Text>
+           <Text style={styles.info}>Pull down to refresh page.</Text>
+           </>
         }
           </ScrollView>
         </View>

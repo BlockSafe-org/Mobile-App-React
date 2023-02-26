@@ -5,11 +5,22 @@ import { useNavigation } from '@react-navigation/native';
 import { ScrollView, Button } from 'react-native';
 import Checkbox from "expo-checkbox";
 import { useState } from 'react';
+import FirebaseAuth from '../../services/Authentication';
+import { addUser } from '../../services/Blockchain/ContractControl';
 
 
 export default function AgreeTermsAndConditions() {
     const navigate = useNavigation()
     const [isChecked, setChecked] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+
+    const agreeHandler = async () => {
+      setIsLoading(true);
+      //await addUser(FirebaseAuth.getUser().email);
+      await new Promise(res => setTimeout(res, 6000))
+      setIsLoading(false);
+      //navigate.navigate("CreateProfile")
+    }
 
 
     return (
@@ -43,8 +54,9 @@ export default function AgreeTermsAndConditions() {
         />
         <Text style={styles.agree}>Agree to the terms and conditions.</Text>
         </View>
+        {isLoading ? <Text style={styles.loading}>Creating account Please wait...</Text>: null}
         <View style={styles.button}>
-            <Button title="Proceed" disabled={isChecked ? false : true} onPress={() => navigate.navigate("CreateProfile")}/>
+            <Button title={isLoading ? "Loading": "Proceed"} disabled={isChecked ? isLoading ? true: false : true} onPress={async () => await agreeHandler()}/>
            </View>
           </ScrollView>
         </View>
@@ -105,6 +117,14 @@ export default function AgreeTermsAndConditions() {
       marginBottom: 10,
       fontSize: 20,
       width: Dimensions.get("screen").width-30
+    },
+
+    loading: {
+      color: "white",
+      textAlign:"center",
+      marginLeft: 10,
+      marginBottom: 10,
+      fontSize: 20
     }
 
   })

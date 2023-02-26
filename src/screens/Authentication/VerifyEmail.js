@@ -16,7 +16,6 @@ export default function VerifyEmail() {
       async function checkEmail () {
         let reloadUser =  await FirebaseAuth.getUser();
         if (reloadUser != null){
-          console.log(reloadUser)
           setUser(reloadUser)
           if(user.emailVerified == false) {
           await FirebaseAuth.sendVerificationEmail().catch(e => console.log(e));
@@ -28,10 +27,16 @@ export default function VerifyEmail() {
       console.log("Sent email!")
     },[])
 
-    const onRefresh = () => {
+    const onRefresh = async () => {
       setRefreshing(true)
-      FirebaseAuth.sendVerificationEmail();
-      setVerified(FirebaseAuth.isVerified());
+      let reloadUser =  await FirebaseAuth.getUser();
+      if (reloadUser != null){
+        setUser(reloadUser)
+        if(user.emailVerified == false) {
+        await FirebaseAuth.sendVerificationEmail().catch(e => console.log(e));
+        }
+        setVerified(user.emailVerified);
+        }
       setRefreshing(false)
     }
 
@@ -42,7 +47,7 @@ export default function VerifyEmail() {
         <ScrollView
       contentContainerStyle={styles.scrollView}
       refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        <RefreshControl refreshing={refreshing} onRefresh={async () => await onRefresh()} />
       }>
         {isVerified ? 
         <>

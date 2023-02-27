@@ -81,15 +81,14 @@ const styles = StyleSheet.create({
         flex:3,
         color: "#5F9EA0",
         marginVertical: 15,
-        fontSize: 20,
-        marginLeft:10
+        fontSize: 15,
+        marginLeft:20
       },
       subTitlesRight: {
         flex:1,
         color: "#5F9EA0",
         marginVertical: 15,
         textDecorationLine:"underline",
-        fontSize: 19,
-        marginRight:10
+        fontSize: 14
       },
 })

@@ -1,24 +1,29 @@
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import globalStyles from "../styles/GlobalStyles"
 import { useNavigation } from '@react-navigation/native';
 import CardButton from '../models/CardButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Balances from '../models/Balances';
-import { useEffect } from 'react';
-import { getUserAddress } from '../services/Blockchain/ContractControl';
+import { useEffect, useState } from 'react';
+import { getBalances, deposit } from '../services/Blockchain/ContractControl';
 import FirebaseAuth from '../services/Authentication';
+import CurrencyFormat from 'react-currency-format';
 
   
 
 export default function Home() {
-    const navigate = useNavigation()
+    const navigate = useNavigation();
+    const [loading, setIsLoading] = useState(true);
+    const [balances, setBalances] = useState([{balance:0},{balance:0}])
     useEffect(() => {
       async function getUser() {
-      let user = await FirebaseAuth.getUser();
-      await getUserAddress(user.email)
+        setIsLoading(true)
+      let result = await getBalances();
+      setBalances(result)
+      setIsLoading(false)
       }
       getUser()
-    })
+    },[])
     return(
         <SafeAreaView style={[globalStyles.dashboardColorLight, styles.container]}>
                 <View style={styles.buttons}>
@@ -29,11 +34,11 @@ export default function Home() {
                 <View style={styles.buttons}>
                   <Balances>
                     <Image source={require("../assets/Dashboard/tether.png")} style={{width:50, alignSelf:"center", resizeMode:"contain"}}/>
-                    <Text style={{textAlign:"center", marginTop: 20}}>Balance</Text>
+                    <CurrencyFormat value={balances[0].balance} displayType='text' decimalScale={2} thousandSeparator={true} suffix={' UGX'} renderText={value => <Text style={{textAlign:"center", marginTop: 30}}>{loading ? <ActivityIndicator color="green"/>: value}</Text>} />
                   </Balances>
                   <Balances>
                     <Image source={require("../assets/Dashboard/gencoin.png")} style={{width:46, height:46, alignSelf:"center", resizeMode:"contain"}}/>
-                    <Text style={{textAlign:"center", marginTop: 20}}>Gencoin</Text>
+                    <CurrencyFormat value={balances[1].balance} displayType='text' decimalScale={2} thousandSeparator={true} suffix={' Gencoin'} renderText={value => <Text style={{textAlign:"center", marginTop: 30}}>{loading ? <ActivityIndicator color="green" />: value}</Text>}/>
                   </Balances>
                 </View>
         </SafeAreaView>

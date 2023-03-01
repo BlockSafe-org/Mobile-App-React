@@ -31,17 +31,12 @@ export default function Home() {
         <SafeAreaView style={[globalStyles.dashboardColorLight, styles.container]}>
                 <View style={styles.buttons}>
                     <CardButton title="Deposit" icon="arrowdown" onPress={() => navigate.navigate("Deposit")}/>
-                    <CardButton title="Swap" icon="swap" onPress={() => navigate.navigate("Swap")}/>
                     <CardButton title="Withdraw" icon="arrowup" onPress={() => navigate.navigate("Withdraw")}/>
                 </View>
                 <View style={styles.buttons}>
                   <Balances>
                     <Image source={require("../assets/Dashboard/tether.png")} style={{width:50, alignSelf:"center", resizeMode:"contain"}}/>
                     <CurrencyFormat value={balances[0].balance} displayType='text' decimalScale={2} thousandSeparator={true} suffix={' UGX'} renderText={value => <Text style={{textAlign:"center", marginTop: 30}}>{loading ? <ActivityIndicator color="green"/>: value}</Text>} />
-                  </Balances>
-                  <Balances>
-                    <Image source={require("../assets/Dashboard/gencoin.png")} style={{width:46, height:46, alignSelf:"center", resizeMode:"contain"}}/>
-                    <CurrencyFormat value={balances[1].balance} displayType='text' decimalScale={2} thousandSeparator={true} suffix={' Gencoin'} renderText={value => <Text style={{textAlign:"center", marginTop: 30}}>{loading ? <ActivityIndicator color="green" />: value}</Text>}/>
                   </Balances>
                 </View>
         </SafeAreaView>

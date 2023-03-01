@@ -32,7 +32,6 @@ export default function Dashboard() {
       })}
       >
         <Tab.Screen name="Home" component={Home}/>
-        <Tab.Screen name="Transfer" component={Transfer}/>
         <Tab.Screen name="MarketPlace" component={MarketDashboard}/>
         <Tab.Screen name="Settings" component={Settings}/>
       </Tab.Navigator>

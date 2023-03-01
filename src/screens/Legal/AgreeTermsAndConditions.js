@@ -6,7 +6,7 @@ import { ScrollView, Button } from 'react-native';
 import Checkbox from "expo-checkbox";
 import { useState } from 'react';
 import FirebaseAuth from '../../services/Authentication';
-import { addUser } from '../../services/Blockchain/ContractControl';
+import { addUser } from '../../services/ContractControl';
 
 
 export default function AgreeTermsAndConditions() {

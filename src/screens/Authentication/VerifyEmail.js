@@ -31,10 +31,10 @@ export default function VerifyEmail() {
       setRefreshing(true)
       let reloadUser =  await FirebaseAuth.getUser();
         setUser(reloadUser)
-        if(user.emailVerified == false) {
+        if(reloadUser.emailVerified == false) {
         await FirebaseAuth.sendVerificationEmail();
         }
-        setVerified(user.emailVerified);
+        setVerified(reloadUser.emailVerified);
       setRefreshing(false)
     }
 

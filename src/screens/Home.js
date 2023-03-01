@@ -5,9 +5,10 @@ import CardButton from '../models/CardButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Balances from '../models/Balances';
 import { useEffect, useState } from 'react';
-import { getBalances, deposit } from '../services/Blockchain/ContractControl';
+import { getBalances, deposit, swap, getMarketData } from '../services/ContractControl';
 import FirebaseAuth from '../services/Authentication';
 import CurrencyFormat from 'react-currency-format';
+
 
   
 
@@ -19,6 +20,8 @@ export default function Home() {
       async function getUser() {
         setIsLoading(true)
       let result = await getBalances();
+      let response = await getMarketData();
+      console.log(response);
       setBalances(result)
       setIsLoading(false)
       }

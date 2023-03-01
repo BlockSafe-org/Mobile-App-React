@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Dashboard from './Dashboard';
-import Deposit from '../Deposit';
+import Deposit from '../Deposits/Deposit';
 import Withdraw from '../Withdraw';
 import Swap from '../Swap';
 import TermsAndConditions from '../Legal/TermsAndConditions';

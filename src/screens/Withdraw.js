@@ -4,14 +4,24 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppBar, IconButton } from "@react-native-material/core";
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
+import DropDownPicker from 'react-native-dropdown-picker';
+import { useState } from 'react';
+import { withdraw } from '../services/ContractControl';
 
 export default function Withdraw() {
     const navigate = useNavigation()
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState("USDT");
+    const [items, setItems] = useState([
+      {label: "tether", value: "USDT", icon: () => <Image style={{width:35, height:35}} source={require('../assets/Dashboard/tether.png')} />},
+      {label: 'GenCoin', value: 'GCN', icon: () => <Image  style={{width:35, height:35, alignSelf:"center", resizeMode:"contain"}} source={require('../assets/Dashboard/gencoin.png')} />}
+    ]);
 
     return(
         <SafeAreaView style={[styles.container, globalStyles.dashboardColorLight]}>
                <AppBar
-            title="Deposit"
+            title="Withdraw"
             style={[globalStyles.dashboardColorLight, {elevation:0}]}
             titleStyle={{color:"#5F9EA0", fontSize:25}}
             leading={() => (
@@ -21,12 +31,37 @@ export default function Withdraw() {
             />
             <ScrollView nestedScrollEnabled={true}>
         <Text style={[styles.subTitles, {marginTop: 40}]}>Enter Amount:</Text>
-        <View style={{flexDirection:'row', justifyContent:"space-evenly"}}>
-        <TextInput style={styles.amount} keyboardType="numeric" placeholder='Enter amount'/>
-        </View>
-        <View style={styles.submit}>
-            <Button title="Proceed" color="#8EB4B5"/>
-           </View>
+        <Formik 
+          initialValues={{amount:""}}
+          onSubmit={async (values, actions) => {
+            items.forEach(async e => {
+              if(e.value == value) {
+                await withdraw("UGX", e.label, value, parseInt(values.amount));
+              }
+            })
+            actions.resetForm()
+          }}>
+            {props => (
+              <>
+              <View style={{flexDirection:'row', justifyContent:"space-evenly"}}>
+                <TextInput style={styles.amount} onChangeText={props.handleChange("amount")} value={props.values.amount} keyboardType="numeric" placeholder='Enter amount'/>
+              </View>
+              <DropDownPicker
+                style={{width:90, height:20, alignSelf:"center", marginTop:10, marginBottom:30}}
+                dropDownContainerStyle={{width:160, alignSelf:"center"}}     
+                open={open}
+                value={value}
+                items={items}
+                setOpen={setOpen}
+                setValue={setValue}
+                setItems={setItems}
+              />
+              <View style={styles.submit}>
+                <Button title="Proceed" onPress={props.handleSubmit} color="#8EB4B5" />
+              </View>
+              </>
+           )}
+           </Formik>
         <Text style={styles.subTitles}>Recent Transactions:</Text>
         <View>
         <Image style={{alignSelf:"center", resizeMode:"contain", width:160, height:160, marginTop:20}} source={require("../assets/no-data.png")}/>

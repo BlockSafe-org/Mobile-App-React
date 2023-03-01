@@ -11,7 +11,7 @@ const Drawer = createDrawerNavigator();
 
 
 export default function MarketDashboard() {
-    const [isMerchant, setIsMerhant] = useState(true)
+    const [isMerchant, setIsMerhant] = useState(false)
     return (
         <Drawer.Navigator initialRouteName="Home" screenOptions={() => ({
           headerShown: false,

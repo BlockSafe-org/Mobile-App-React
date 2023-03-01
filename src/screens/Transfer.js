@@ -41,7 +41,7 @@ export default function Transfer() {
         </TouchableOpacity>
         </View>
         <View style={styles.submit}>
-            <Button title="Submit" />
+            <Button title="Submit" color="#8EB4B5"/>
            </View>
         <Text style={styles.subTitles}>Recent Transactions:</Text>
         <View>

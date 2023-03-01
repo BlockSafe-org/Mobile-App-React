@@ -36,25 +36,24 @@ export default function Swap() {
         <DropDownPicker
         style={{width:90, height:60, marginBottom:20, justifyContent:"center"}}
         dropDownContainerStyle={{width:160, marginLeft:-60}}     
-      open={toOpen}
-      value={toValue}
-      items={items}
-      setOpen={setToOpen}
-      setValue={setToValue}
-      setItems={setItems}
-    />
-        </View>
-        <Text style={styles.subTitles}>Token To:</Text>
-        <View style={{flexDirection:'row', alignContent:"center"}}>
-        <TextInput style={styles.amount} keyboardType="numeric" placeholder='Enter amount...'/>
-        <DropDownPicker
-        style={{width:90, height:60, marginBottom:20, justifyContent:"center"}}
-        dropDownContainerStyle={{width:160, marginLeft:-60}}     
       open={fromOpen}
       value={fromValue}
       items={items}
       setOpen={setFromOpen}
       setValue={setFromValue}
+      setItems={setItems}
+    />
+        </View>
+        <Text style={styles.subTitles}>Token To:</Text>
+        <View style={{flexDirection:'row', alignContent:"center"}}>
+        <DropDownPicker
+        style={{width:90, height:60, marginBottom:20,  alignSelf:"center", justifyContent:"center"}}
+        dropDownContainerStyle={{width:160, alignSelf:"center", marginTop:10}}     
+      open={toOpen}
+      value={toValue}
+      items={items}
+      setOpen={setToOpen}
+      setValue={setToValue}
       setItems={setItems}
     />
         </View>

@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Register from '../Authentication/Register';
 import Login from '../Authentication/Login';
-import VerifyEmail from '../Authentication/VerifyEmail';
+import VerifyStack from "./VerifyStack";
 
 const Stack = createNativeStackNavigator()
 
@@ -13,7 +13,7 @@ export default function AuthStack() {
    })}>
     <Stack.Screen name='Login' component={Login}/>
      <Stack.Screen name='Register' component={Register}/>
-     <Stack.Screen name='Verify' component={VerifyEmail}/>
+     <Stack.Screen name='Verify' component={VerifyStack}/>
    </Stack.Navigator>
     )
 }

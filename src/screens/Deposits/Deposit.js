@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import { deposit } from '../../services/ContractControl';
-import DepositTransaction from '../../models/DepositTransaction';
+import Transaction from '../../models/Transaction';
 
 
 
@@ -46,7 +46,9 @@ export default function Deposit() {
           
         <Text style={styles.subTitles}>Recent Transactions:</Text>
         {true?
-        <DepositTransaction/>
+        
+        <Transaction />
+  
          : 
          <View>
          <Image style={{alignSelf:"center", resizeMode:"contain", width:160, height:160, marginTop:20}} source={require("../../assets/no-data.png")}/>

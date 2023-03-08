@@ -8,6 +8,7 @@ import { Formik } from 'formik';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useState } from 'react';
 import { withdraw } from '../services/ContractControl';
+import Transaction from '../models/Transaction';
 
 export default function Withdraw() {
     const navigate = useNavigation()
@@ -63,10 +64,16 @@ export default function Withdraw() {
            )}
            </Formik>
         <Text style={styles.subTitles}>Recent Transactions:</Text>
-        <View>
-        <Image style={{alignSelf:"center", resizeMode:"contain", width:160, height:160, marginTop:20}} source={require("../assets/no-data.png")}/>
-        <Text style={styles.nodata}>No Transactions here...</Text>
-        </View>
+        {true?
+        
+        <Transaction />
+  
+         : 
+         <View>
+         <Image style={{alignSelf:"center", resizeMode:"contain", width:160, height:160, marginTop:20}} source={require("../assets/no-data.png")}/>
+         <Text style={styles.nodata}>No Transactions here...</Text>
+         </View>
+         }
         </ScrollView>
         </SafeAreaView>
     )

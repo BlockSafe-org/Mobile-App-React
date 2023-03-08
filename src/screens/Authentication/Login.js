@@ -30,7 +30,7 @@ export default function Login() {
             setIsLoading(false)
             if(res.code == 1) {
               console.log(res.message);
-            } else {
+            } else if (res.code = 0) {
               console.log(res.message);
               navigate.navigate("Verify");
             }

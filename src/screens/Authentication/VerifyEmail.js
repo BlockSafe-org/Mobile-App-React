@@ -14,13 +14,11 @@ export default function VerifyEmail() {
 
     useEffect(() => {
       async function checkEmail () {
-        let reloadUser =  await FirebaseAuth.getUser();
-        if (reloadUser != null){
-          setUser(reloadUser)
-          if(user.emailVerified == false) {
-          await FirebaseAuth.sendVerificationEmail();
+        if (FirebaseAuth.getUser() != null){
+          if(FirebaseAuth.isVerified() != true) {
+          await FirebaseAuth.sendVerificationEmail().catch(e => console.log(e));
+          setVerified(FirebaseAuth.isVerified());
           }
-          setVerified(user.emailVerified);
           }
       }
       checkEmail();
@@ -29,16 +27,7 @@ export default function VerifyEmail() {
 
     const onRefresh = async () => {
       setRefreshing(true)
-      let reloadUser =  await FirebaseAuth.getUser().catch(e => {
-        console.log(e)
-      });
-        setUser(reloadUser)
-        if(reloadUser.emailVerified == false) {
-        await FirebaseAuth.sendVerificationEmail().catch(e => {
-          console.log(e)
-        });
-        }
-        setVerified(user.emailVerified);
+      setVerified(await FirebaseAuth.isVerified());
       setRefreshing(false)
     }
 

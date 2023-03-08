@@ -16,10 +16,12 @@ export default function AgreeTermsAndConditions() {
 
     const agreeHandler = async () => {
       setIsLoading(true);
-      //await addUser(FirebaseAuth.getUser().email);
-        await new Promise(res => setTimeout(res, 6000))
+      if (FirebaseAuth.getUser().email != null) {
+        await addUser(FirebaseAuth.getUser().email);
+        //await new Promise(res => setTimeout(res, 6000))
         setIsLoading(false);
-      //navigate.navigate("CreateProfile")
+      navigate.navigate("CreateProfile")
+      }
     }
 
 

@@ -109,20 +109,6 @@ export async function getUserAddress() {
     }
  }
 
- export async function swap(currency, from, to, amount) {
-    try {
-        let userAddress = await getUserAddress();
-        let user = await FirebaseAuth.getUser();
-        const contract = new ethers.Contract(userAddress, userContract.abi, signer);
-        let usdValue = await getCurrencyPrice(currency);
-        let value = Math.floor((amount/usdValue)*10**8);
-        console.log(`You have swapped ${value} from ${from} to ${to}.`)
-        //tx = await contract.swap(from, to, value);
-    } catch (error) {
-        console.log(error);
-    }
- }
-
  export async function getTokenPrice(tokenName) {
     try {
         const response = await fetch(`https://api.coingecko.com/api/v3/coins/${tokenName}`);
@@ -143,43 +129,6 @@ export async function getUserAddress() {
       }  
  }
 
-function formatMarketData(data) {
-    let formattedData = []
-    data.forEach((item) => {
-       formattedData.push({x:item[0], y:item[1]})
-    })
-
-    return formattedData;
-}
-
-
- export async function getMarketData() {
-    
-    try {
-        let response = await fetch("https://api.coingecko.com/api/v3/coins/tether/market_chart?vs_currency=usd&days=7");
-        const json = await response.json();
-        const data = formatMarketData(json.prices)
-        return data;
-    } catch (error) {
-        console.log(error);
-    }
- }
-
- export async function sendUserEmail(receiver) {
-    try {
-        
-    } catch (error) {
-        
-    }
- }
-
- export async function sendUserAddress(receiver) {
-    try {
-        
-    } catch (error) {
-        
-    }
- }
 
  export async function addMerchant() {
     try {

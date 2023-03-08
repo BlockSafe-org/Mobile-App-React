@@ -13,6 +13,11 @@ class FirebaseAuth {
       return _auth.currentUser;
     }
 
+    static async addProfilePic() {
+      let user = await this.getUser()
+      user.updateProfile({displayName:"martin", photoURL:""})
+    }
+
 
     static async isVerified() {
       await _auth.currentUser.reload();

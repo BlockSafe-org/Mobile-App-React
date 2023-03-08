@@ -4,17 +4,15 @@ import { AppBar, IconButton } from '@react-native-material/core';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import Carousel from 'react-native-reanimated-carousel';
-import CategoryCard from '../../models/CategoryCard';
+import ItemCard from '../../models/ItemCard';
 
 export default function MarketPlace({navigation}) {
     const width = Dimensions.get('window').width-40;
 
     let data = [
-        {category:"Men's Fashion", img:""},
-        {category:"Watches & Jewelry", img:""},
-        {category:"Women's Fashion", img:""},
-        {category:"Electronics", img:""},
-        {category:"Phone Assessories", img:""},
+        {name:"Duslang Bag", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS07u8PtKXxwI9PxxUeNuXmddXUd7KxZ-sSv9Ix34RN&s", prices: {crypto: 25000, fiat: 40000}},
+        {name:"Rolex Watch Silver & Gold", img:"https://content.rolex.com/dam/2022-11/upright-bba-with-shadow/m228238-0061.png?impolicy=v6-upright&imwidth=270", prices:{crypto:55000, fiat:85000 }},
+        {name:"Turtle neck Sweater", img:"https://m.media-amazon.com/images/I/71mDDeJQUnL._UY550_.jpg", prices:{crypto:35000, fiat:45000}},
     ]
     return(
         <TouchableWithoutFeedback onPress={() => navigation.closeDrawer()}>
@@ -28,11 +26,10 @@ export default function MarketPlace({navigation}) {
             />
             <Carousel
             style={{alignSelf:"center" , justifyContent:"center"}}
-                loop
                 width={width}
                 height={width / 2}
-                autoPlay={true}
-                data={[...new Array(3).keys()]}
+                autoPlay={false}
+                data={[...new Array(1).keys()]}
                 scrollAnimationDuration={3000}
                 mode="parallax"
                 modeConfig={{
@@ -56,14 +53,11 @@ export default function MarketPlace({navigation}) {
                 )}
             />
             <View style={{flexDirection:"row"}}>
-                <Text style={styles.subTitles}>Categories:</Text>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate("Categories")}>
-                <Text style={styles.subTitlesRight}>See more:</Text>
-                </TouchableWithoutFeedback>
+                <Text style={styles.subTitles}>Top Picks</Text>
             </View>
-            <FlatList data={data} numColumns={2} contentContainerStyle={{justifyContent:"space-evenly", alignSelf:"center"}} renderItem={({item}) =>{
+            <FlatList data={data} contentContainerStyle={{justifyContent:"space-evenly", alignSelf:"center"}} renderItem={({item}) =>{
                 return(
-                    <CategoryCard category={item.category}/>
+                    <ItemCard item={item}/>
                 )
             }}/>
         </ScrollView>
@@ -81,7 +75,7 @@ const styles = StyleSheet.create({
         flex:3,
         color: "#5F9EA0",
         marginVertical: 15,
-        fontSize: 15,
+        fontSize: 20,
         marginLeft:20
       },
       subTitlesRight: {

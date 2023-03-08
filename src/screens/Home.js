@@ -16,12 +16,12 @@ export default function Home() {
     const navigate = useNavigation();
     const [loading, setIsLoading] = useState(true);
     const [balances, setBalances] = useState([{balance:0},{balance:0}])
+    
     useEffect(() => {
       async function getUser() {
         setIsLoading(true)
       let result = await getBalances();
-      let response = await getMarketData();
-      console.log(response);
+        
       setBalances(result)
       setIsLoading(false)
       }

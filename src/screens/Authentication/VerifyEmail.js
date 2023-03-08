@@ -29,12 +29,16 @@ export default function VerifyEmail() {
 
     const onRefresh = async () => {
       setRefreshing(true)
-      let reloadUser =  await FirebaseAuth.getUser();
+      let reloadUser =  await FirebaseAuth.getUser().catch(e => {
+        console.log(e)
+      });
         setUser(reloadUser)
         if(reloadUser.emailVerified == false) {
-        await FirebaseAuth.sendVerificationEmail();
+        await FirebaseAuth.sendVerificationEmail().catch(e => {
+          console.log(e)
+        });
         }
-        setVerified(reloadUser.emailVerified);
+        setVerified(user.emailVerified);
       setRefreshing(false)
     }
 

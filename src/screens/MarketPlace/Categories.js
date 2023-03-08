@@ -8,11 +8,11 @@ import CategoryCard from "../../models/CategoryCard";
 
 export default function Categories({navigation}) {
     let data = [
-        {category:"Men's Fashion", img:""},
-        {category:"Watches & Jewelry", img:""},
-        {category:"Women's Fashion", img:""},
-        {category:"Electronics", img:""},
-        {category:"Phone Assessories", img:""},
+        {title:"Men's Fashion", img:"https://m.media-amazon.com/images/I/71mDDeJQUnL._UY550_.jpg"},
+        {title:"Watches & Jewelry", img:"https://m.media-amazon.com/images/I/71mDDeJQUnL._UY550_.jpg"},
+        {title:"Women's Fashion", img:"https://m.media-amazon.com/images/I/71mDDeJQUnL._UY550_.jpg"},
+        {title:"Electronics", img:"https://m.media-amazon.com/images/I/71mDDeJQUnL._UY550_.jpg"},
+        {title:"Phone Assessories", img:"https://m.media-amazon.com/images/I/71mDDeJQUnL._UY550_.jpg"}
     ]
     return (
         <SafeAreaView style={[styles.container, globalStyles.dashboardColorLight]}>
@@ -21,9 +21,9 @@ export default function Categories({navigation}) {
             titleStyle={{color:"#5F9EA0", fontSize:25}}
             leading={<IconButton icon={<Entypo name="menu" size={26} color="black" />} onPress={() => navigation.openDrawer()}/>}
             />
-             <FlatList data={data} numColumns={2} contentContainerStyle={{justifyContent:"space-evenly", alignSelf:"center"}} renderItem={({item}) =>{
+             <FlatList data={data} contentContainerStyle={{justifyContent:"space-evenly", alignSelf:"center"}} renderItem={({item}) =>{
                 return(
-                    <CategoryCard category={item.category}/>
+                    <CategoryCard category={item}/>
                 )
             }}/>
         </SafeAreaView>
